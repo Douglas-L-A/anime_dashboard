@@ -1,0 +1,18 @@
+i# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+
+# Django
+*.sqlite3
+
+# Data 
+data/raw/*
+data/processed/*
+data/curated/*
+
+# OS
+.DS_Store
