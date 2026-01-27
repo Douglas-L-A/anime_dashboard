@@ -1,0 +1,12 @@
+import sys
+from pathlib import Path
+
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+sys.path.append(str(ROOT_DIR))
+
+from pipelines.ingest.ingest_anime_api import main
+
+
+if __name__ == "__main__":
+    main()
