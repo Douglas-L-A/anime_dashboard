@@ -11,6 +11,13 @@ __pycache__/
 env/
 venv/
 
+# Data
+data/raw/
+data/processed/
+*.parquet
+*.csv
+*.json
+
 # Jupyter
 .ipynb_checkpoints/
 
