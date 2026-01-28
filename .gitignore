@@ -1,18 +1,27 @@
-i# Python
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 .env
+
+# Conda / venv
+.env/
+.venv/
+env/
 venv/
 
+# Data
+data/raw/
+data/processed/
+data/curated/
+*.parquet
+*.csv
+*.json
+
+# Jupyter
+.ipynb_checkpoints/
+
 # Django
-*.sqlite3
-
-# Data 
-data/raw/*
-data/processed/*
-data/curated/*
-
-# OS
-.DS_Store
+db.sqlite3
+staticfiles/
