@@ -32,37 +32,6 @@ O projeto consome uma base curada de animes em formato **Parquet**, aplica filtr
   - Respostas em JSON
   - Backend desacoplado do front-end
 
----
-
-## 🧱 Arquitetura do Projeto
-
-anime_dashboard/
-├── data/
-│ └── curated/
-│ └── animes_curated_base.parquet
-│
-├── notebooks/
-├── scripts/
-│
-├── webapp/
-│ ├── manage.py
-│ ├── anime_dashboard/
-│ │ ├── settings.py
-│ │ ├── urls.py
-│ │ └── wsgi.py
-│ │
-│ ├── dashboard/
-│ │ ├── api/
-│ │ │ ├── urls.py
-│ │ │ └── views.py
-│ │ ├── templates/
-│ │ └── static/
-│ │ └── dashboard/
-│ │ ├── css/
-│ │ └── js/
-│ │
-│ └── requirements.txt
-
 ## 🛠️ Tecnologias Utilizadas
 
 ### Back-end
