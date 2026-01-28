@@ -1,19 +1,27 @@
-# Anime Data Pipeline
+# Anime Dashboard
 
-Projeto de portfólio que implementa um pipeline de dados utilizando uma API pública de animes,
-com armazenamento em camadas (raw, processed, curated) e consumo via uma aplicação web em Django.
+Projeto de engenharia de dados + web para análise de animes usando a API Jikan (MyAnimeList).
 
 ## Arquitetura
 
-- Ingestão: API pública de animes (Jikan)
-- Raw: JSON bruto da API
-- Processed: dados limpos e normalizados
-- Curated: dados prontos para consumo analítico
-- WebApp: Django consumindo apenas a camada curated
+- Ingestion → Raw
+- Processed
+- Curated
+- Query Layer (Pandas)
+- API REST (Django + DRF)
+- Dashboard Web
 
-## Tecnologias
+## Funcionalidades
+
+- Filtros combinados (genre, theme, type, year, score)
+- Métricas agregadas
+- Navegação anime a anime (1/N)
+- API desacoplada do front
+
+## Stack
 
 - Python
 - Pandas
 - Django
-- Requests
+- Django REST Framework
+- Parquet
