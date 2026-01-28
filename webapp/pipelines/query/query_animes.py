@@ -1,8 +1,9 @@
 import pandas as pd
 import numpy as np
+from django.conf import settings
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parents[3]
+BASE_DIR = Path(settings.BASE_DIR).parent
 CURATED_PATH = BASE_DIR / "data" / "curated" / "animes_curated_base.parquet"
 
 
