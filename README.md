@@ -13,21 +13,15 @@ O projeto consome uma base curada de animes em formato **Parquet**, aplica filtr
 
 - 🔎 **Filtros dinâmicos**
   - Gênero
-  - Tema
   - Tipo (TV, Movie, OVA, etc.)
   - Temporada
   - Ano (intervalo)
-  - Episódios (mín / máx)
-  - Nota (score mínimo / máximo)
+  - Nota (score mínimo)
 
 - 📊 **Métricas agregadas**
   - Total de animes filtrados
-  - Média, mediana, mínimo e máximo de score
+  - Score médio
   - Intervalo de anos disponíveis
-
-- 🧭 **Navegação paginada**
-  - Botões *Anterior* / *Próximo*
-  - Bloqueio automático quando não há próxima página
 
 - ⏳ **Estados de UI**
   - Loading durante requisições
