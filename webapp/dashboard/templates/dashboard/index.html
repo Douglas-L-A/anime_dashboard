@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Anime Dashboard</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/dashboard.css' %}">
+</head>
+<body>
+
+<h1>Anime Dashboard</h1>
+
+<!-- 🔎 Filtros -->
+<section class="filters">
+    <select id="genreFilter" multiple>
+        <option value="Action">Action</option>
+        <option value="Drama">Drama</option>
+        <option value="Comedy">Comedy</option>
+    </select>
+
+    <select id="typeFilter">
+        <option value="">All Types</option>
+        <option value="TV">TV</option>
+        <option value="Movie">Movie</option>
+        <option value="OVA">OVA</option>
+    </select>
+
+    <select id="seasonFilter">
+        <option value="">Any Season</option>
+        <option value="winter">Winter</option>
+        <option value="spring">Spring</option>
+        <option value="summer">Summer</option>
+        <option value="fall">Fall</option>
+    </select>
+
+    <input type="number" id="yearMin" placeholder="Year min">
+    <input type="number" id="yearMax" placeholder="Year max">
+    <input type="number" id="scoreMin" step="0.1" placeholder="Score min">
+
+    <button id="applyFilters">Apply</button>
+</section>
+
+<!-- 📊 Métricas -->
+<section id="metrics">
+    <div>Total animes: <span id="total-animes">-</span></div>
+    <div>Score médio: <span id="avg-score">-</span></div>
+    <div>Ano: <span id="year-range">-</span></div>
+</section>
+
+<hr>
+
+<!-- ⏳ Estado -->
+<div id="state-message" class="hidden"></div>
+
+<!-- 🎴 Card -->
+<section id="anime-card">
+    <img id="anime-image" src="" alt="" />
+
+    <div class="anime-info">
+        <h2 id="anime-title"></h2>
+        <p id="anime-score"></p>
+        <p id="anime-meta"></p>
+        <p id="anime-synopsis"></p>
+    </div>
+</section>
+
+<hr>
+
+<!-- ◀ ▶ Paginação -->
+<section id="pagination">
+    <button id="prev-btn">◀ Anterior</button>
+    <span id="page-info"></span>
+    <button id="next-btn">Próximo ▶</button>
+</section>
+
+<script src="{% static 'dashboard/js/dashboard.js' %}"></script>
+</body>
+</html>

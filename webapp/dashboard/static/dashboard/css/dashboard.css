@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background: #f5f6fa;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+/* Filtros */
+.filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.filters select,
+.filters input,
+.filters button {
+    padding: 6px 10px;
+}
+
+/* Métricas */
+#metrics {
+    display: flex;
+    gap: 30px;
+    font-weight: bold;
+}
+
+/* Estado */
+#state-message {
+    margin: 20px 0;
+    text-align: center;
+    color: #666;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Card */
+#anime-card {
+    display: flex;
+    gap: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+#anime-card img {
+    max-width: 220px;
+    border-radius: 8px;
+}
+
+.anime-info {
+    max-width: 700px;
+}
+
+/* Paginação */
+#pagination {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

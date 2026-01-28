@@ -6,6 +6,18 @@ BASE_DIR = Path(__file__).resolve().parents[3]
 CURATED_PATH = BASE_DIR / "data" / "curated" / "animes_curated_base.parquet"
 
 
+def normalize_list(value):
+    if value is None:
+        return []
+    if isinstance(value, list):
+        return value
+    if isinstance(value, np.ndarray):
+        return value.tolist()
+    if isinstance(value, str):
+        # tenta tratar string simples ou repr de lista
+        return [v.strip() for v in value.replace("[", "").replace("]", "").replace("'", "").split(",")]
+    return []
+
 def to_json_safe(value):
     if pd.isna(value):
         return None
@@ -51,9 +63,14 @@ def apply_filters(
     score_max=None,
 ):
     if genres:
+        genres = [g.lower() for g in genres]
+
         df = df[
             df["genres"].apply(
-                lambda g: isinstance(g, list) and any(x in g for x in genres)
+                lambda g: any(
+                    x in [item.lower() for item in normalize_list(g)]
+                    for x in genres
+                )
             )
         ]
 
@@ -138,6 +155,10 @@ def query_animes(
     order_dir="asc",
     page=1,
 ):
+    
+    if isinstance(genres, str):
+        genres = [g.strip() for g in genres.split(",")]
+
     df = load_curated()
 
     df = apply_filters(
