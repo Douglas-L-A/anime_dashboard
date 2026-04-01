@@ -144,16 +144,40 @@ function updateSlider() {
 els.scoreSlider.addEventListener("input", updateSlider);
 
 // ── SIDEBAR TOGGLE ───────────────────────────────────────────
+function setSidebar(collapsed) {
+  const btn       = els.sidebarToggle;
+  const iconOpen  = btn.querySelector(".nsb-icon-open");  // ícone de funil
+  const iconClose = btn.querySelector(".nsb-icon-close"); // ícone de X
+  const layout    = document.querySelector(".main-layout");
+
+  if (collapsed) {
+    // Sidebar FECHADA → mostra ícone de funil ("abrir filtros")
+    els.sidebar.classList.add("collapsed");
+    layout.classList.add("sidebar-hidden");
+    btn.classList.remove("active");
+    iconOpen.classList.remove("hidden");   // funil visível
+    iconClose.classList.add("hidden");    // X escondido
+  } else {
+    // Sidebar ABERTA → mostra X ("fechar filtros")
+    els.sidebar.classList.remove("collapsed");
+    layout.classList.remove("sidebar-hidden");
+    btn.classList.add("active");
+    iconOpen.classList.add("hidden");     // funil escondido
+    iconClose.classList.remove("hidden"); // X visível
+  }
+}
+
 els.sidebarToggle.addEventListener("click", () => {
-  els.sidebar.classList.toggle("collapsed");
+  const isCollapsed = els.sidebar.classList.contains("collapsed");
+  setSidebar(!isCollapsed);
 });
 
 // ── BUILD QUERY ──────────────────────────────────────────────
 function buildQuery(page) {
   const params = new URLSearchParams();
 
-  const genres = [...selectedGenres];
-  if (genres.length > 0) params.append("genres", genres.join(","));
+  // Envia um parâmetro por gênero (getlist no Django espera isso)
+  [...selectedGenres].forEach(g => params.append("genres", g));
 
   const type = els.typeFilter.value;
   if (type) params.append("types", type);
@@ -443,6 +467,7 @@ function init() {
   initChipGroup("seasonChips", "seasonFilter");
   initOrderDirChips();
   updateSlider();
+  setSidebar(false); // sidebar começa aberta → botão mostra X
   loadData(1);
 }
 

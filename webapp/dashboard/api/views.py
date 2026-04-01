@@ -12,10 +12,18 @@ class AnimeDashboardAPIView(APIView):
         try:
             page = int(request.GET.get("page", 1))
 
-            genres = request.GET.getlist("genres")
-            themes = request.GET.getlist("themes")
-            types = request.GET.getlist("types")
-            season = request.GET.getlist("season")
+            def flat_list(key):
+                """Aceita ?genres=A&genres=B  e também  ?genres=A,B"""
+                raw = request.GET.getlist(key)
+                result = []
+                for item in raw:
+                    result.extend([v.strip() for v in item.split(",") if v.strip()])
+                return result or None
+
+            genres = flat_list("genres")
+            themes = flat_list("themes")
+            types  = flat_list("types")
+            season = flat_list("season")
 
             year_min = request.GET.get("year_min")
             year_max = request.GET.get("year_max")
@@ -27,10 +35,10 @@ class AnimeDashboardAPIView(APIView):
 
             result = query_animes(
                 page=page,
-                genres=genres or None,
-                themes=themes or None,
-                types=types or None,
-                season=season or None,
+                genres=genres,
+                themes=themes,
+                types=types,
+                season=season,
                 year_min=int(year_min) if year_min else None,
                 year_max=int(year_max) if year_max else None,
                 score_min=float(score_min) if score_min else None,
