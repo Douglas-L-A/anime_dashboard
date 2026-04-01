@@ -4,7 +4,11 @@ from django.conf import settings
 from pathlib import Path
 
 BASE_DIR = Path(settings.BASE_DIR).parent
-CURATED_PATH = BASE_DIR / "data" / "curated" / "animes_curated_base.parquet"
+
+# Tenta curated primeiro, cai no processed se não existir
+_CURATED   = BASE_DIR / "data" / "curated"  / "animes_curated_base.parquet"
+_PROCESSED = BASE_DIR / "data" / "processed" / "top_anime_processed.parquet"
+CURATED_PATH = _CURATED if _CURATED.exists() else _PROCESSED
 
 
 def normalize_list(value):

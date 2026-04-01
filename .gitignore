@@ -14,9 +14,13 @@ venv/
 # Data
 data/raw/
 data/curated
+*.json
+
+# Ignorar parquet/csv globalmente, MAS manter data/processed/
 *.parquet
 *.csv
-*.json
+!data/processed/
+!data/processed/**
 
 # Jupyter
 .ipynb_checkpoints/
