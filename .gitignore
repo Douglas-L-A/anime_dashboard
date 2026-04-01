@@ -13,7 +13,6 @@ venv/
 
 # Data
 data/raw/
-data/processed/
 data/curated
 *.parquet
 *.csv
